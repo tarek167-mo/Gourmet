@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Premium Dining</title>
+    <!-- Links to your existing stylesheet so the theme matches perfectly -->
+    <link rel="stylesheet" href="contact us-design.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="anim-nav">
+        <a href="index.html" class="nav-logo">
+            <div class="emblem">
+                <div class="ring-solid"></div>
+                <div class="star-center"></div>
+            </div>
+            <div class="logo-text">GOURMET</div>
+        </a>
+        
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="menu.html">Menu</a>
+            <a href="About us.html">About</a>
+            <a href="Contact us.html">Contact</a>
+            <a href="#">Review</a>
+            <a href="login.html">Login</a>
+            <a onclick="checkLoginBeforeReserve()" class="btn-nav-res">Book a Table</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content fade-in">
+            <h1>Get in Touch</h1>
+            <p>We would love to hear from you. Book a table or ask a question.</p>
+        </div>
+    </header>
+
+    <!-- Contact Section -->
+    <main class="contact-section fade-in">
+        <div class="container contact-container">
+            
+            <!-- Left Side: Contact Form -->
+            <div class="contact-form-wrapper">
+                <h2>Send us a Message</h2>
+                <form action="#" class="contact-form">
+                    <div class="input-group">
+                        <input type="text" id="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="email" id="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="tel" id="phone" placeholder="Your Phone Number">
+                    </div>
+                    <div class="input-group">
+                        <textarea id="message" rows="5" placeholder="How can we help you?" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+
+            <!-- Right Side: Contact Information -->
+            <div class="contact-info">
+                <h2>Our Location</h2>
+                <div class="info-block">
+                    <h3>Address</h3>
+                    <p> East Hub <br>Madinty, Cairo</p>
+                </div>
+                <div class="info-block">
+                    <h3>Reservations</h3>
+                    <p>Phone: +20 1009435169<br>Email: reservations@Gourmet.com</p>
+                </div>
+                <div class="info-block">
+                    <h3>Opening Hours</h3>
+                    <p>Monday - Thursday: 5:00 PM - 10:30 PM<br>
+                    Friday - Saturday: 5:00 PM - 11:30 PM<br>
+                    Sunday: Closed</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <!-- Column 1: Socials and Quick Links (Anchored Left) -->
+        <div class="footer-col">
+            <div class="social-links">
+                <a href="https://facebook.com" class="social-icon">f</a>
+                <a href="https://x.com" class="social-icon">𝕏</a>
+                <a href="https://instgram.com" class="social-icon">ig</a>
+            </div>
+            <h4>Quick Links</h4>
+            <ul>
+                 <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="About us.html">About Us</a></li>
+                <li><a href="Contact us.html">Contact Us</a></li>
+                <li><a href="#">Reviews</a></li>
+            </ul>
+        </div>
+
+        <!-- Column 2: Contact Info -->
+        <div class="footer-col">
+            <h4>Contact Info</h4>
+            <div class="contact-item"><span>✉</span> support@gourmet.com</div>
+            <div class="contact-item"><span>📞</span> +20 1009435169</div>
+            <div class="contact-item"><span>📍</span> East Hub, Madinty</div>
+        </div>
+
+        <div class="footer-bottom">
+            &copy; 2026 GOURMET RESTAURANT GROUP. ALL RIGHTS RESERVED.
+        </div>
+    </footer>
+    <script src="contact us-js.js"></script>
+
+</body>
+</html>

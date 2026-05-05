@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gourmet Luxury - Member Portal</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Jost:wght@300;400&display=swap');
+
+        body {
+            background-color: #121212;
+            color: #FAEDCD;
+            font-family: 'Jost', sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, #2a1b0d 0%, #121212 80%);
+            z-index: -1;
+        }
+
+        #customAlert {
+            position: fixed;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #D4A373;
+            color: #1a1208;
+            padding: 15px 30px;
+            border-radius: 4px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: top 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1000;
+            text-transform: uppercase;
+            font-size: 13px;
+        }
+
+        .login-card {
+            background: #1a1208;
+            width: 100%;
+            max-width: 400px;
+            padding: 50px 40px;
+            border-radius: 12px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.7);
+            border: 1px solid rgba(212, 163, 115, 0.1);
+            text-align: center;
+            animation: cardFadeIn 1s ease;
+        }
+
+        .logo-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            cursor: pointer;
+            margin-bottom: 30px;
+        }
+
+        .emblem {
+            position: relative;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .ring-solid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 1px solid #D4A373;
+            border-radius: 50%;
+            transition: 0.4s;
+        }
+
+        .star-center {
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            background-color: #D4A373;
+            clip-path: polygon(50% 0%, 65% 35%, 100% 50%, 65% 65%, 50% 100%, 35% 65%, 0% 50%, 35% 35%);
+            transition: 0.4s;
+        }
+
+        .logo-box:hover .star-center { transform: rotate(180deg) scale(1.3); }
+
+        .logo-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            letter-spacing: 6px;
+            color: #FAEDCD;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 35px;
+        }
+
+        .tab {
+            padding: 8px 0;
+            cursor: pointer;
+            font-size: 11px;
+            letter-spacing: 2px;
+            color: rgba(250, 237, 205, 0.3);
+            transition: 0.3s;
+            border-bottom: 2px solid transparent;
+        }
+
+        .tab.active {
+            color: #D4A373;
+            border-bottom: 2px solid #D4A373;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .hidden { display: none; }
+
+        label {
+            display: block;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            color: #D4A373;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 163, 115, 0.1);
+            border-radius: 4px;
+            color: white;
+            font-family: 'Jost', sans-serif;
+            box-sizing: border-box;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus { border-color: #D4A373; }
+
+        .pw-requirements {
+            margin-top: 15px;
+            font-size: 11px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5px;
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .pw-requirements.visible {
+            opacity: 1;
+            max-height: 120px;
+            margin-bottom: 10px;
+        }
+
+        .requirement {
+            color: rgba(250, 237, 205, 0.2);
+            transition: 0.3s;
+        }
+
+        .requirement.met { color: #D4A373; }
+
+        .btn-action {
+            width: 100%;
+            padding: 16px;
+            background: #D4A373;
+            color: #1a1208;
+            border: none;
+            border-radius: 4px;
+            font-family: 'Jost', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+
+        .btn-action:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            background: #444;
+        }
+
+        .btn-action:not(:disabled):hover { background: #FAEDCD; transform: translateY(-2px); }
+
+        .form-footer { margin-top: 25px; font-size: 12px; }
+        .form-footer a { color: #D4A373; text-decoration: none; opacity: 0.6; }
+
+        @keyframes cardFadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+    <div id="customAlert">Notification</div>
+
+    <div class="login-card">
+        <a href="index.html" class="logo-box">
+            <div class="emblem"><div class="ring-solid"></div><div class="star-center"></div></div>
+            <div class="logo-text">GOURMET</div>
+        </a>
+
+        <div class="tabs">
+            <div class="tab active" id="loginTab" onclick="showForm('login')">LOGIN</div>
+            <div class="tab" id="registerTab" onclick="showForm('register')">REGISTER</div>
+        </div>
+
+        <form id="authForm" onsubmit="handleSubmit(event)">
+            <div class="form-group hidden" id="nameGroup">
+                <label>Full Name</label>
+                <input type="text" id="fullName" placeholder="Alexander Dumas">
+            </div>
+
+            <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" id="email" placeholder="guest@gourmet.com" required>
+            </div>
+
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" id="password" placeholder="••••••••" required>
+                
+                <div class="pw-requirements" id="pwHints">
+                    <div id="chr" class="requirement">• 8+ Characters</div>
+                    <div id="cap" class="requirement">• Uppercase</div>
+                    <div id="low" class="requirement">• Lowercase</div>
+                    <div id="num" class="requirement">• Number</div>
+                    <div id="spc" class="requirement">• Special Char</div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-action" id="submitBtn">Enter Dining Hall</button>
+            
+            <div class="form-footer">
+                <a href="javascript:void(0)" id="forgotBtn" onclick="handleForgot()">Request Password Recovery</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        let currentMode = 'login';
+        const emailInput = document.getElementById('email');
+        const passInput = document.getElementById('password');
+        const submitBtn = document.getElementById('submitBtn');
+        const pwHints = document.getElementById('pwHints');
+
+        function showNotification(message) {
+            const alertBox = document.getElementById('customAlert');
+            alertBox.textContent = message;
+            alertBox.style.top = '40px';
+            setTimeout(() => { alertBox.style.top = '-100px'; }, 3000);
+        }
+
+        function showForm(mode) {
+            currentMode = mode;
+            const nameGrp = document.getElementById('nameGroup');
+            const forgot = document.getElementById('forgotBtn');
+            
+            document.getElementById('loginTab').classList.toggle('active', mode === 'login');
+            document.getElementById('registerTab').classList.toggle('active', mode === 'register');
+
+            if (mode === 'register') {
+                nameGrp.classList.remove('hidden');
+                submitBtn.textContent = "Join the Club";
+                forgot.style.display = 'none';
+                pwHints.classList.add('visible');
+                validatePassword();
+            } else {
+                nameGrp.classList.add('hidden');
+                submitBtn.textContent = "Enter Dining Hall";
+                forgot.style.display = 'inline-block';
+                pwHints.classList.remove('visible');
+                submitBtn.disabled = false;
+            }
+        }
+
+        function validatePassword() {
+            const val = passInput.value;
+            const checks = {
+                chr: val.length >= 8,
+                cap: /[A-Z]/.test(val),
+                low: /[a-z]/.test(val),
+                num: /[0-9]/.test(val),
+                spc: /[!@#$%^&*(),.?":{}|<>]/.test(val)
+            };
+
+            let allMet = true;
+            for (let id in checks) {
+                const el = document.getElementById(id);
+                if (checks[id]) {
+                    el.classList.add('met');
+                } else {
+                    el.classList.remove('met');
+                    allMet = false;
+                }
+            }
+
+            if (currentMode === 'register') {
+                submitBtn.disabled = !allMet;
+            }
+        }
+
+        passInput.addEventListener('input', validatePassword);
+
+        function handleSubmit(e) {
+            e.preventDefault();
+            const email = emailInput.value.trim().toLowerCase();
+            const password = passInput.value;
+            
+            // Retrieve simulated user database
+            let users = JSON.parse(localStorage.getItem('gourmetUsers')) || [];
+
+            if (currentMode === 'register') {
+                // Check if user is already in the system
+                if (users.find(u => u.email === email)) {
+                    showNotification("Email already registered. Please log in.");
+                    setTimeout(() => showForm('login'), 1500);
+                    return;
+                }
+
+                // Save new user
+                users.push({ 
+                    email: email, 
+                    password: password,
+                    name: document.getElementById('fullName').value 
+                });
+                localStorage.setItem('gourmetUsers', JSON.stringify(users));
+
+                showNotification("Membership Approved! Please log in.");
+                setTimeout(() => {
+                    showForm('login');
+                    passInput.value = "";
+                }, 1500);
+
+            } else {
+                // Find existing user by email
+                const registeredUser = users.find(u => u.email === email);
+
+                // Check if email exists
+                if (!registeredUser) {
+                    showNotification("Email not found. Please register first.");
+                    setTimeout(() => showForm('register'), 1500);
+                    return;
+                }
+
+                // CHECK: Verify if the password is right
+                if (registeredUser.password !== password) {
+                    showNotification("Wrong password. Please try again.");
+                    return;
+                }
+
+                // Successful login
+                showNotification("Welcome back to Gourmet!");
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 1500);
+            }
+        }
+
+        function handleForgot() {
+            const email = emailInput.value;
+            showNotification(email ? "Recovery sent to " + email : "Please enter your email first");
+        }
+    </script>
+</body>
+</html>
