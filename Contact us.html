@@ -4,63 +4,138 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GOURMET - Contact Us</title>
-    <!-- The ?v=1.1 trick forces your browser to refresh the design -->
-    <link rel="stylesheet" href="contact us-design_3.css?v=1.1">
+    <style>
+        /* --- INTERNAL CSS: GUARANTEED TO LOAD --- */
+        body {
+            background-color: #121212 !important; /* Forces dark theme */
+            color: #F8F9FA;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding-top: 80px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            background: #121212;
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(212, 163, 115, 0.2);
+            z-index: 1000;
+            box-sizing: border-box;
+        }
+
+        .nav-logo { color: #D4A373; text-decoration: none; font-weight: bold; font-size: 1.5rem; }
+
+        .nav-links a {
+            color: #F8F9FA;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        /* Layout */
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .contact-container {
+            display: flex;
+            max-width: 1100px;
+            margin: 0 auto;
+            gap: 50px;
+            padding: 40px;
+        }
+
+        .contact-form-wrapper {
+            flex: 1.5;
+            background: #1E1E1E;
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #333;
+        }
+
+        .contact-info { flex: 1; }
+
+        /* Form Elements */
+        input, textarea {
+            width: 100%;
+            background: #121212;
+            border: 1px solid #444;
+            color: white;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .submit-btn {
+            background: #D4A373;
+            color: #121212;
+            border: none;
+            padding: 15px;
+            width: 100%;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 900px) {
+            .contact-container { flex-direction: column; padding: 20px; }
+            .nav-links { display: none; } /* Add your hamburger logic here */
+        }
+    </style>
 </head>
 <body>
-    <nav class="anim-nav">
-        <a href="index.html" class="nav-logo">
-            <div class="emblem"><div class="ring-solid"></div><div class="star-center"></div></div>
-            <div class="logo-text">GOURMET</div>
-        </a>
-        <div class="menu-toggle" id="mobile-menu">
-            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
-        </div>
-        <div class="nav-links" id="nav-links">
+    <nav>
+        <a href="index.html" class="nav-logo">GOURMET</a>
+        <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="menues.html">Menu</a>
             <a href="About us.html">About</a>
             <a href="Contact us.html">Contact</a>
             <a href="review.html">Review</a>
-            <a href="login.html">Login</a>
-            <a onclick="checkLoginBeforeReserve()" class="btn-nav-res">Book a Table</a>
         </div>
     </nav>
 
     <header class="hero">
-        <div class="hero-content">
-            <h1>Get in Touch</h1>
-            <p>We would love to hear from you. Book a table or ask a question.</p>
-        </div>
+        <h1>Get in Touch</h1>
+        <p>We would love to hear from you. Book a table or ask a question.</p>
     </header>
 
-    <main class="contact-section">
-        <div class="container contact-container">
-            <div class="contact-form-wrapper">
-                <h2>Send us a Message</h2>
-                <form class="contact-form">
-                    <input type="text" placeholder="Your Name" required>
-                    <input type="email" placeholder="Your Email" required>
-                    <input type="tel" placeholder="Your Phone Number">
-                    <textarea rows="5" placeholder="How can we help you?" required></textarea>
-                    <button type="submit" class="submit-btn">Send Message</button>
-                </form>
-            </div>
-
-            <div class="contact-info">
-                <h2>Our Location</h2>
-                <div class="info-block">
-                    <h3>Address</h3>
-                    <p>East Hub, Madinty, Cairo</p>
-                </div>
-                <div class="info-block">
-                    <h3>Reservations</h3>
-                    <p>Phone: +20 1009435169<br>Email: reservations@Gourmet.com</p>
-                </div>
-            </div>
+    <div class="contact-container">
+        <div class="contact-form-wrapper">
+            <h2>Send us a Message</h2>
+            <form id="contactForm">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <input type="tel" placeholder="Your Phone Number">
+                <textarea rows="5" placeholder="How can we help you?" required></textarea>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
         </div>
-    </main>
 
-    <script src="contact us-js_3.js"></script>
+        <div class="contact-info">
+            <h2>Our Location</h2>
+            <p><strong>Address:</strong> East Hub, Madinty, Cairo</p>
+            <p><strong>Phone:</strong> +20 1009435169</p>
+            <p><strong>Email:</strong> reservations@Gourmet.com</p>
+            <p><strong>Hours:</strong> Mon-Sat: 5PM - 11PM</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Message Sent!');
+            this.reset();
+        });
+    </script>
 </body>
 </html>
