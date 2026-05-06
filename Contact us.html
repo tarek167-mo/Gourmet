@@ -4,26 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GOURMET - Contact Us</title>
-    <link rel="stylesheet" href="contact us-design.css">
+    <!-- CRITICAL: This filename must match your CSS file exactly[cite: 16] -->
+    <link rel="stylesheet" href="contact-design.css">
 </head>
 <body>
-    <!-- Navigation Bar -->
     <nav class="anim-nav">
         <a href="index.html" class="nav-logo">
-            <div class="emblem">
-                <div class="ring-solid"></div>
-                <div class="star-center"></div>
-            </div>
+            <div class="emblem"><div class="ring-solid"></div><div class="star-center"></div></div>
             <div class="logo-text">GOURMET</div>
         </a>
-
-        <!-- Hamburger Icon for Mobile -->
         <div class="menu-toggle" id="mobile-menu">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
+            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
         </div>
-        
         <div class="nav-links" id="nav-links">
             <a href="index.html">Home</a>
             <a href="menues.html">Menu</a>
@@ -35,51 +27,30 @@
         </div>
     </nav>
 
-    <!-- Hero Section[cite: 20] -->
     <header class="hero">
-        <div class="hero-content">
-            <h1>Get in Touch</h1>
-            <p>We would love to hear from you. Book a table or ask a question.</p>
-        </div>
+        <h1>Get in Touch</h1>
+        <p>We would love to hear from you. Book a table or ask a question.</p>
     </header>
 
-    <!-- Contact Section[cite: 20, 22] -->
-    <main class="contact-section">
-        <div class="container contact-container">
-            <!-- Left Side: Form -->
-            <div class="contact-form-wrapper">
-                <h2>Send us a Message</h2>
-                <form class="contact-form">
-                    <input type="text" placeholder="Your Name" required>
-                    <input type="email" placeholder="Your Email" required>
-                    <input type="tel" placeholder="Your Phone Number">
-                    <textarea rows="5" placeholder="How can we help you?" required></textarea>
-                    <button type="submit" class="submit-btn">Send Message</button>
-                </form>
-            </div>
-
-            <!-- Right Side: Info[cite: 20] -->
-            <div class="contact-info">
-                <h2>Our Location</h2>
-                <div class="info-block">
-                    <h3>Address</h3>
-                    <p>East Hub, Madinty, Cairo</p>
-                </div>
-                <div class="info-block">
-                    <h3>Reservations</h3>
-                    <p>Phone: +20 1009435169</p>
-                    <p>Email: reservations@Gourmet.com</p>
-                </div>
-                <div class="info-block">
-                    <h3>Opening Hours</h3>
-                    <p>Mon - Thu: 5:00 PM - 10:30 PM</p>
-                    <p>Fri - Sat: 5:00 PM - 11:30 PM</p>
-                    <p>Sun: Closed</p>
-                </div>
-            </div>
+    <div class="contact-container">
+        <div class="contact-form-wrapper">
+            <h2>Send us a Message</h2>
+            <form class="contact-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <input type="tel" placeholder="Your Phone Number">
+                <textarea rows="5" placeholder="How can we help you?" required></textarea>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
         </div>
-    </main>
+        <div class="contact-info">
+            <h2>Our Location</h2>
+            <p><strong>Address:</strong> East Hub, Madinty, Cairo</p>
+            <p><strong>Phone:</strong> +20 1009435169</p>
+            <p><strong>Email:</strong> reservations@Gourmet.com</p>
+        </div>
+    </div>
 
-    <script src="contact us-js.js"></script>
+    <script src="contact-js.js"></script>
 </body>
 </html>
