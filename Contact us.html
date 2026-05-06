@@ -5,91 +5,444 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GOURMET - Contact Us</title>
     <style>
-        /* --- INTERNAL CSS: GUARANTEED TO LOAD --- */
-        body {
-            background-color: #121212 !important; /* Forces dark theme */
-            color: #F8F9FA;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding-top: 80px;
-        }
+        /* =========================================
+   1. BASE STYLES & TYPOGRAPHY
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        /* Navigation */
-        nav {
+html {
+    scroll-behavior: smooth;
+}
+.reveal { opacity: 0; } 
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #1E1E1E; /* Palette: Background */
+    color: #F8F9FA; /* Palette: Text */
+    line-height: 1.6;
+}
+
+h1, h2, .logo {
+    font-family: 'Georgia', serif; 
+    color: #D4A373; /* Palette: Secondary */
+    font-weight: normal;
+}
+ @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+/* =========================================
+   2. NAVIGATION BAR
+   ========================================= */
+anim-nav { animation: fadeInDown 1s ease forwards; }
+ nav {
             position: fixed;
-            top: 0; left: 0; width: 100%;
-            background: #121212;
+            top: 0;
+            width: 100%;
             padding: 15px 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid rgba(212, 163, 115, 0.2);
+            background: rgba(18, 18, 18, 0.95);
+            backdrop-filter: blur(10px);
             z-index: 1000;
             box-sizing: border-box;
+            border-bottom: 1px solid rgba(212, 163, 115, 0.1);
         }
 
-        .nav-logo { color: #D4A373; text-decoration: none; font-weight: bold; font-size: 1.5rem; }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .emblem {
+            position: relative;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .ring-solid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 1px solid #D4A373;
+            border-radius: 50%;
+        }
+
+        .star-center {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background-color: #D4A373;
+            clip-path: polygon(50% 0%, 65% 35%, 100% 50%, 65% 65%, 50% 100%, 35% 65%, 0% 50%, 35% 35%);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-logo:hover .star-center { transform: rotate(180deg) scale(1.2); }
+
+        .logo-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            letter-spacing: 4px;
+            color: #FAEDCD;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
 
         .nav-links a {
-            color: #F8F9FA;
             text-decoration: none;
-            margin-left: 20px;
-            font-size: 14px;
+            color: #FAEDCD;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: 0.3s;
+            opacity: 0.7;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover { opacity: 1; color: #D4A373; }
+
+        .btn-nav-res {
+            border: 1px solid #D4A373;
+            padding: 10px 20px;
+            transition: 0.4s;
+        }
+
+        .btn-nav-res:hover {
+            background: #D4A373;
+            color: #121212 !important;
+        }
+/* =========================================
+   3. SHARED COMPONENTS (Buttons, Hero, Footer)
+   ========================================= */
+.hero {
+    background-color: #121212; 
+    padding: 8rem 2rem;
+    text-align: center;
+    border-bottom: 3px solid #D4A373; 
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: #cccccc;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    background-color: transparent;
+    color: #D4A373; 
+    text-decoration: none;
+    border: 1px solid #D4A373;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #D4A373; 
+    border-color: #D4A373;
+    color: #F8F9FA; 
+}
+
+footer {
+            background-color: #0d0d0d;
+            padding: 80px 50px 30px;
+            border-top: 1px solid rgba(212, 163, 115, 0.1);
+            display: grid;
+            /* Updated to 2-column layout to fill space after removing support */
+            grid-template-columns: 1fr 1fr; 
+            gap: 40px;
+        }
+
+        .footer-col h4 {
+            color: #D4A373;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            margin-bottom: 25px;
+            letter-spacing: 2px;
             text-transform: uppercase;
         }
 
-        /* Layout */
-        .hero {
-            text-align: center;
-            padding: 60px 20px;
+        .footer-col ul { list-style: none; padding: 0; margin: 0; }
+        .footer-col ul li { margin-bottom: 15px; }
+
+        .footer-col ul li a {
+            color: #FAEDCD;
+            text-decoration: none;
+            font-size: 14px;
+            opacity: 0.6;
+            transition: 0.3s;
         }
 
-        .contact-container {
+        .footer-col ul li a:hover { opacity: 1; color: #D4A373; }
+
+        .social-links { 
+            display: flex; 
+            gap: 15px; 
+            margin-bottom: 30px; 
+            justify-content: flex-start; 
+        }
+
+        .social-icon {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: rgba(212, 163, 115, 0.05);
             display: flex;
-            max-width: 1100px;
-            margin: 0 auto;
-            gap: 50px;
-            padding: 40px;
+            justify-content: center;
+            align-items: center;
+            color: #FAEDCD;
+            text-decoration: none;
+            font-size: 12px;
+            transition: 0.3s;
+            border: 1px solid rgba(212, 163, 115, 0.2);
         }
 
-        .contact-form-wrapper {
-            flex: 1.5;
-            background: #1E1E1E;
-            padding: 30px;
-            border-radius: 12px;
-            border: 1px solid #333;
-        }
-
-        .contact-info { flex: 1; }
-
-        /* Form Elements */
-        input, textarea {
-            width: 100%;
-            background: #121212;
-            border: 1px solid #444;
-            color: white;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-
-        .submit-btn {
+        .social-icon:hover {
             background: #D4A373;
             color: #121212;
-            border: none;
-            padding: 15px;
-            width: 100%;
-            font-weight: bold;
-            cursor: pointer;
-            border-radius: 5px;
+            transform: translateY(-3px);
         }
 
-        /* Mobile Responsive */
-        @media (max-width: 900px) {
-            .contact-container { flex-direction: column; padding: 20px; }
-            .nav-links { display: none; } /* Add your hamburger logic here */
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            font-size: 14px;
+            opacity: 0.7;
         }
+
+        .contact-item span { color: #D4A373; }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 45px;
+            height: 45px;
+            background: #D4A373;
+            color: #121212;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            font-size: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: 0.3s;
+            z-index: 100;
+        }
+
+        .footer-bottom {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding-top: 60px;
+            font-size: 11px;
+            opacity: 0.4;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+/* =========================================
+   4. ABOUT US PAGE STYLES
+   ========================================= */
+.about-section {
+    padding: 6rem 5%;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 5rem;
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-text h2 {
+    font-size: 2.8rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.about-text h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: #9B2226; 
+    margin-top: 15px;
+}
+
+.about-text p {
+    margin-bottom: 1.8rem;
+    font-size: 1.1rem;
+    color: #e0e0e0;
+}
+
+.about-image {
+    flex: 1;
+    width: 100%;
+}
+
+.real-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px; 
+    box-shadow: 0 15px 40px rgba(0,0,0,0.6); 
+}
+
+/* =========================================
+   5. CONTACT PAGE STYLES
+   ========================================= */
+.contact-section {
+    padding: 6rem 5%;
+}
+
+.contact-container {
+    align-items: flex-start;
+    gap: 4rem;
+}
+
+.contact-form-wrapper {
+    flex: 3;
+    background-color: #121212; 
+    padding: 3rem;
+    border-radius: 8px;
+    border: 1px solid rgba(212, 163, 115, 0.1);
+}
+
+.contact-form-wrapper h2, .contact-info h2 {
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+}
+
+.input-group {
+    margin-bottom: 1.5rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    background-color: transparent;
+    border: 1px solid #333;
+    color: #F8F9FA; 
+    font-family: inherit;
+    font-size: 1rem;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: #888;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: #D4A373; 
+}
+
+.contact-form textarea {
+    resize: vertical; 
+}
+
+.contact-form .btn {
+    cursor: pointer;
+    width: 100%; 
+    margin-top: 1rem;
+}
+
+.contact-info {
+    flex: 2;
+}
+
+.info-block {
+    margin-bottom: 2rem;
+}
+
+.info-block h3 {
+    color: #D4A373; 
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.info-block p {
+    color: #e0e0e0;
+    line-height: 1.8;
+}
+
+/* =========================================
+   6. ANIMATIONS
+   ========================================= */
+.fade-in {
+    opacity: 0; 
+    animation: reveal 1.2s ease-out forwards;
+}
+
+.hero-content.fade-in { animation-delay: 0.2s; }
+.about-text.fade-in { animation-delay: 0.8s; }
+.about-image.fade-in { animation-delay: 1.2s; }
+.contact-section.fade-in { animation-delay: 0.5s; }
+
+@keyframes reveal {
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================================
+   7. MOBILE RESPONSIVENESS
+   ========================================= */
+@media (max-width: 900px) {
+    .container, .contact-container {
+        flex-direction: column;
+        gap: 3rem;
+    }
+    .hero h1 { font-size: 3rem; }
+    .nav-links { display: none; }
+    .contact-form-wrapper {
+        width: 100%;
+        padding: 2rem 1.5rem;
+    }
+}
     </style>
 </head>
 <body>
@@ -131,11 +484,78 @@
     </div>
 
     <script>
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Message Sent!');
-            this.reset();
+       // 1. GLOBAL FUNCTIONS (Accessible by HTML onclick attributes)
+function showNotification(msg) {
+    // Create the alert element if it doesn't exist
+    let alertBox = document.getElementById('mainAlert');
+    if (!alertBox) {
+        alertBox = document.createElement('div');
+        alertBox.id = 'mainAlert';
+        // Applying styles directly to match your theme
+        Object.assign(alertBox.style, {
+            position: 'fixed',
+            top: '-100px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            background: '#D4A373',
+            color: '#1a1208',
+            padding: '15px 40px',
+            zIndex: '2000',
+            transition: '0.5s',
+            textTransform: 'uppercase',
+            fontSize: '11px',
+            letterSpacing: '2px'
         });
+        document.body.appendChild(alertBox);
+    }
+    
+    alertBox.textContent = msg;
+    alertBox.style.top = '20px';
+    setTimeout(() => { alertBox.style.top = '-100px'; }, 3000);
+}
+
+function checkLoginBeforeReserve() {
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+
+    if (isLoggedIn === 'true') {
+        window.location.href = 'reservation.html';
+    } else {
+        // Remember the intent for the login page redirect logic
+        localStorage.setItem('redirectAfterLogin', 'reservation.html');
+        
+        showNotification("Please login to reserve a table");
+        setTimeout(() => { 
+            window.location.href = 'login.html'; 
+        }, 1500);
+    }
+}
+
+// 2. DOM CONTENT LOADED (Internal page logic)
+document.addEventListener('DOMContentLoaded', () => {
+    const contactForm = document.querySelector('.contact-form');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(event) {
+            event.preventDefault(); 
+            this.reset();
+
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            
+            submitBtn.textContent = 'Message Sent!';
+            submitBtn.style.backgroundColor = '#9B2226'; 
+            submitBtn.style.borderColor = '#9B2226';
+            submitBtn.style.color = '#F8F9FA'; 
+
+            setTimeout(() => {
+                submitBtn.textContent = originalText;
+                submitBtn.style.backgroundColor = 'transparent';
+                submitBtn.style.borderColor = '#D4A373';
+                submitBtn.style.color = '#D4A373';
+            }, 3000);
+        });
+    }
+});
     </script>
 </body>
 </html>
