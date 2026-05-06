@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GOURMET-menu</title>
+  <link rel="stylesheet" href="menues.CSS" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════ NAVBAR ═══════════════ -->
+  <nav class="anim-nav">
+        <a href="index.html" class="nav-logo">
+            <div class="emblem">
+                <div class="ring-solid"></div>
+                <div class="star-center"></div>
+            </div>
+            <div class="logo-text">GOURMET</div>
+        </a>
+        
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="menues.html">Menu</a>
+            <a href="About us.html">About</a>
+            <a href="Contact us.html">Contact</a>
+            <a href="review.html">Review</a>
+            <a href="login.html">Login</a>
+            <a onclick="checkLoginBeforeReserve()" class="btn-nav-res">Book a Table</a>
+        </div>
+    </nav>
+
+  <!-- ═══════════════════════════════════════ HERO ════════════════ -->
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <span class="hero-eyebrow">Est. 1987 · Cairo</span>
+      <h1 class="hero-title">The Finest Food<br/><em>Made for You</em></h1>
+      <p class="hero-sub">Crafted with passion. Served with elegance.</p>
+      <a href="#menu" class="btn-hero">Explore the Menu</a>
+    </div>
+    <div class="hero-scroll-hint">&#8595; Scroll</div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ MENU ════════════════ -->
+  <section class="menu-section" id="menu">
+    <div class="section-header">
+      <span class="section-tag">Our Selection</span>
+      <h2 class="section-title">The Menu</h2>
+      <div class="gold-line"></div>
+    </div>
+
+    <!-- Category Filters -->
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="pizza">Pizza</button>
+      <button class="filter-btn" data-filter="burger">Burger</button>
+      <button class="filter-btn" data-filter="pasta">Pasta</button>
+      <button class="filter-btn" data-filter="desserts">Desserts</button>
+      <button class="filter-btn" data-filter="drinks">Drinks</button>
+    </div>
+
+    <!-- Menu Grid -->
+    <div class="menu-grid" id="menuGrid">
+
+      <!-- ── PIZZA ── -->
+      <div class="menu-card" data-category="pizza">
+        <div class="card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=600&q=80" alt="Truffle Margherita"/>
+          <span class="card-tag">Pizza</span>
+        </div>
+        <div class="card-body">
+          <h3>Truffle Margherita</h3>
+          <p>San Marzano tomato, buffalo mozzarella, fresh basil & black truffle shavings.</p>
+          <div class="card-footer">
+            <span class="price">2,052EGP</span>
+            <button class="btn-details" data-name="Truffle Margherita" data-desc="San Marzano tomato, buffalo mozzarella, fresh basil & black truffle shavings. Wood-fired at 450°C for a perfectly charred, airy crust. Our most iconic dish since 1987." data-price="2,052EGP" data-img="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=800&q=80" data-tags="Vegetarian · Signature">View Details</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card" data-category="pizza">
+        <div class="card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&q=80" alt="Prosciutto Bianca"/>
+          <span class="card-tag">Pizza</span>
+        </div>
+        <div class="card-body">
+          <h3>Prosciutto Bianca</h3>
+          <p>White base, aged Parmigiano, 24-month prosciutto di Parma & rocket leaves.</p>
+          <div class="card-footer">
+            <span class="price">2,376EGP</span>
+            <button class="btn-details" data-name="Prosciutto Bianca" data-desc="Creamy white base with aged Parmigiano Reggiano, 24-month cured prosciutto di Parma, fresh rocket and a drizzle of cold-press extra virgin olive oil. Elegantly balanced." data-price="2,376EGP" data-img="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800&q=80" data-tags="Chef's Pick · New">View Details</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card" data-category="pizza">
+        <div class="card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600&q=80" alt="Four Cheese Royal"/>
+          <span class="card-tag">Pizza</span>
+        </div>
+        <div class="card-body">
+          <h3>Four Cheese Royal</h3>
+          <p>Gorgonzola, fontina, smoked scamorza & mozzarella on a honey-glazed base.</p>
+          <div class="card-footer">
+            <span class="price">2,241EGP</span>
+            <button class="btn-details" data-name="Four Cheese Royal" data-desc="A decadent quartet of gorgonzola, fontina, smoked scamorza and fresh mozzarella on a golden honey-glazed base. Finished with walnut crumble and fresh thyme." data-price="2,241EGP" data-img="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800&q=80" data-tags="Vegetarian · Rich">View Details</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card" data-category="pizza">
+        <div class="card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?w=600&q=80" alt="Lobster Royale Pizza"/>
+          <span class="card-tag">Pizza</span>
+        </div>
+        <div class="card-body">
+          <h3>Lobster Royale</h3>
+          <p>Saffron cream, Maine lobster, tarragon oil and Ossetra caviar pearls.</p>
+          <div class="card-footer">
+            <span class="price">4,806EGP</span>
+            <button class="btn-details" data-name="Lobster Royale" data-desc="Our most extravagant creation — a saffron-infused cream base topped with butter-poached Maine lobster, fresh tarragon oil and a finishing touch of Ossetra caviar. True luxury on a crust." data-price="4,806EGP" data-img="https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?w=800&q=80" data-tags="Premium · Signature">View Details</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── BURGER ── -->
+      <div class="menu-card" data-category="burger">
+        <div class="card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&q=80" alt="Wagyu Gold Burger"/>
+          <span class="card-tag">Burger</span>
+        </div>
+        <div class="card-body">
+          <h3>Wagyu Gold</h3>
+          <p>A5 Wagyu patty, aged cheddar, sautéed foie gras & black garlic aioli.</p>
+          <div class="card-footer">
+            <span class="price">3,888EGP</span>
+            <button class="btn-details" data-name="Wagyu Gold" data-desc="200g of Japanese A5 Wagyu beef, seared to perfection. Layered with 18-month aged cheddar, a silky sautéed foie gras medallion, caramelised shallots and our house black garlic aioli on a brioche bun." data-price="3,888EGP" data-img="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&q=80" data-tags="Premium · Signature">View Details</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card" data-category="burger">
+        <div class="card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=600&q=80" alt="Black Truffle Smash"/>
+          <span class="card-tag">Burger</span>
+        </div>
+        <div class="card-body">
+          <h3>Black Truffle Smash</h3>
+          <p>Double smash patty, Gruyère, caramelised onion & black truffle mayo.</p>
+          <div class="card-footer">
+            <span class="price">2,916EGP</span>
+            <button class="btn-details" data-name="Black Truffle Smash" data-desc="Two crispy-edged smash patties stacked with melted Gruyère, slow-caramelised onions and a generous spread of house-made black truffle mayo on a toasted sesame brioche." data-price="2,916EGP" data-img="https://images.unsplash.com/photo-1550547660-d9450f859349?w=800&q=80" data-tags="Chef's Pick · Bold">View Details</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card" data-category="burger">
+        <div class="card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1586816001966-79b736744398?w=600&q=80" alt="Crispy Lobster Burger"/>
+          <span class="card-tag">Burger</span>
+        </div>
+        <div class="card-body">
+          <h3>Crispy Lobster</h3>
+          <p>Tempura lobster tail, mango slaw, saffron aioli & micro greens.</p>
+          <div class="card-footer">
+            <span class="price">3,618EGP</span>
+            <button class="btn-details" data-name="Crispy Lobster" data-desc="A whole lobster tail in light tempura batter served on toasted milk bread with mango & fennel slaw, saffron aioli, pickled jalapeño and a nest of micro greens. Refreshingly luxurious." data-price="3,618EGP" data-img="https://images.unsplash.com/photo-1586816001966-79b736744398?w=800&q=80" data-tags="Seafood · Seasonal">View Details</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card" data-category="burger">
+        <div class="card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=600&q=80" alt="Portobello Noir"/>
+          <span class="card-tag">Burger</span>
+        </div>
+        <div class="card-body">
+          <h3>Portobello Noir</h3>
+          <p>Marinated portobello, smoked gouda, roasted pepper & truffle hummus.</p>
+          <div class="card-footer">
+            <span class="price">2,052EGP</span>
+            <button class="btn-details" data-name="Portobello Noir" data-desc="A thick marinated portobello cap chargrilled to perfection, layered with smoked gouda, roasted red pepper, house truffle hummus and a walnut-herb pesto on dark rye. Our finest vegetarian creation." data-price="2,052EGP" data-img="https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=800&q=80" data-tags="Vegetarian · Plant-Based">View Details</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── PASTA ── -->
+      <div class="menu-card" data-category="pasta">
+        <div class="card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1612874742237-6526221588e3?w=600&q=80" alt="Lobster Linguine"/>
+          <span class="card-tag">Pasta</span>
+        </div>
+        <div class="card-body">
+          <h3>Lobster Linguine</h3>
+          <p>Hand-pulled linguine, bisque reduction, fresh lobster & Calabrian chili.</p>
+          <div class="card-footer">
+            <span class="price">3,132EGP</span>
+            <button class="btn-details" data-name="Lobster Linguine" data-desc="Silky house-made linguine tossed in a rich lobster bisque reduction with sweet whole lobster pieces, a touch of Calabrian chili heat, fresh cherry tomatoes and chives. A coastal masterpiece." data-price="3,132EGP" data-img="https://images.unsplash.com/photo-1612874742237-6526221588e3?w=800&q=80" data-tags="Seafood · Signature">View Details</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card" data-category="pasta">
+        <div class="card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1595295333158-4742f28fbd85?w=600&q=80" alt="Porcini Tagliatelle"/>
+          <span class="card-tag">Pasta</span>
+        </div>
+        <div class="card-body">
+          <h3>Porcini Tagliatelle</h3>
+          <p>Egg tagliatelle, wild porcini, aged Parmigiano & toasted hazelnuts.</p>
+          <div class="card-footer">
+            <span class="price">2,484EGP</span>
+            <button class="btn-details" data-name="Porcini Tagliatelle" data-desc="Rich egg tagliatelle with a deeply aromatic wild porcini sauce, finished with freshly grated aged Parmigiano Reggiano, toasted Piedmont hazelnuts and a few drops of white truffle oil." data-price="2,484EGP" data-img="https://images.unsplash.com/photo-1595295333158-4742f28fbd85?w=800&q=80" data-tags="Vegetarian · Earthy">View Details</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card" data-category="pasta">
+        <div class="card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=600&q=80" alt="Black Ink Crab Spaghetti"/>
+          <span class="card-tag">Pasta</span>
+        </div>
+        <div class="card-body">
+          <h3>Black Ink Crab</h3>
+          <p>Squid ink spaghetti, Dungeness crab, lemon cream & bottarga.</p>
+          <div class="card-footer">
+            <span class="price">3,348EGP</span>
+            <button class="btn-details" data-name="Black Ink Crab" data-desc="Dramatic squid ink spaghetti with hand-picked Dungeness crab, a silky lemon-cream sauce, crispy capers and shaved bottarga. One of the most visually striking and deeply flavourful dishes on our menu." data-price="3,348EGP" data-img="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=800&q=80" data-tags="Seafood · Bold · Theatrical">View Details</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card" data-category="pasta">
+        <div class="card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?w=600&q=80" alt="Duck Ragu Pappardelle"/>
+          <span class="card-tag">Pasta</span>
+        </div>
+        <div class="card-body">
+          <h3>Duck Ragu Pappardelle</h3>
+          <p>Slow-braised duck confit, pappardelle, red wine reduction & sage.</p>
+          <div class="card-footer">
+            <span class="price">2,808EGP</span>
+            <button class="btn-details" data-name="Duck Ragu Pappardelle" data-desc="Broad ribbon pappardelle draped in a slow-braised duck confit ragu, cooked for eight hours in Barolo wine with aromatic herbs, finished with crispy sage and Parmigiano shavings." data-price="2,808EGP" data-img="https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?w=800&q=80" data-tags="Chef's Pick · Hearty">View Details</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── DESSERTS ── -->
+      <div class="menu-card" data-category="desserts">
+        <div class="card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=600&q=80" alt="Dark Chocolate Sphere"/>
+          <span class="card-tag">Dessert</span>
+        </div>
+        <div class="card-body">
+          <h3>Dark Chocolate Sphere</h3>
+          <p>70% Valrhona dome, praline heart, salted caramel & gold dust.</p>
+          <div class="card-footer">
+            <span class="price">1,512EGP</span>
+            <button class="btn-details" data-name="Dark Chocolate Sphere" data-desc="A showstopping 70% Valrhona chocolate sphere with a molten hazelnut praline and salted caramel centre. Tableside, warm caramel sauce is poured over — shattering the dome dramatically. Finished with edible gold dust." data-price="1,512EGP" data-img="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=800&q=80" data-tags="Theatrical · Signature · Indulgent">View Details</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card" data-category="desserts">
+        <div class="card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=600&q=80" alt="Vanilla Crème Brûlée"/>
+          <span class="card-tag">Dessert</span>
+        </div>
+        <div class="card-body">
+          <h3>Tahitian Crème Brûlée</h3>
+          <p>Tahitian vanilla bean custard, caramelised sugar crust & raspberry coulis.</p>
+          <div class="card-footer">
+            <span class="price">1,188EGP</span>
+            <button class="btn-details" data-name="Tahitian Crème Brûlée" data-desc="Classic French crème brûlée infused with rare Tahitian vanilla beans, topped with a perfectly thin caramelised sugar crust and served alongside a vibrant fresh raspberry coulis and candied lemon zest." data-price="1,188EGP" data-img="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=800&q=80" data-tags="Classic · Light">View Details</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card" data-category="desserts">
+        <div class="card-img-wrap">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNnm7UOClm1NrE2MgcYjoPdL5GaK44U9lZVA&s" alt="Panna coutta"/>
+          <span class="card-tag">Dessert</span>
+        </div>
+        <div class="card-body">
+          <h3>cinnamon Panna coutta</h3>
+          <p>Silky Madagascar vanilla cream, delicate soft set & mixed berry compote.</p>
+          <div class="card-footer">
+            <span class="price">1,404EGP</span>
+            <button class="btn-details" data-name="cinnamon Panna coutta" data-desc="Velvety cream infused with hand-picked Persian saffron and green cardamom, topped with a delicate honey-gold leaf and crushed silvered pistachios. A fragrant, cream-based masterpiece of aromatic elegance and smooth indulgence." data-price="1,404EGP" data-img="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNnm7UOClm1NrE2MgcYjoPdL5GaK44U9lZVA&s" data-tags="Creamy · Floral">View Details</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card" data-category="desserts">
+        <div class="card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1579954115545-a95591f28bfc?w=600&q=80" alt="Champagne Sorbet"/>
+          <span class="card-tag">Dessert</span>
+        </div>
+        <div class="card-body">
+          <h3>Champagne & Lychee Sorbet</h3>
+          <p>Veuve Clicquot sorbet, fresh lychee, crystallised violet & mint.</p>
+          <div class="card-footer">
+            <span class="price">1,296EGP</span>
+            <button class="btn-details" data-name="Champagne & Lychee Sorbet" data-desc="A palate-cleansing celebration in a glass — house-churned Veuve Clicquot rosé sorbet layered with fresh lychee, crystallised violet petals and a sprig of fresh mint. Light, effervescent, sublime." data-price="1,296EGP" data-img="https://images.unsplash.com/photo-1579954115545-a95591f28bfc?w=800&q=80" data-tags="Light · Refreshing">View Details</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── DRINKS ── -->
+      <div class="menu-card" data-category="drinks">
+        <div class="card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=600&q=80" alt="Golden Hour Cocktail"/>
+          <span class="card-tag">Drink</span>
+        </div>
+        <div class="card-body">
+          <h3>Golden Hour</h3>
+          <p>Aged Bourbon, honey cordial, smoked orange peel & 24K gold flake.</p>
+          <div class="card-footer">
+            <span class="price">1,728EGP</span>
+            <button class="btn-details" data-name="Golden Hour" data-desc="A stirred cocktail of 12-year Knob Creek Bourbon, house honey cordial, angostura bitters, a grand rinse of Courvoisier and a hand-expressed smoked orange peel — crowned with a dusting of edible 24K gold flake." data-price="1,728EGP" data-img="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=800&q=80" data-tags="Cocktail · Signature · Spirit">View Details</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card" data-category="drinks">
+        <div class="card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1563227812-0ea4c22e6cc8?w=600&q=80" alt="Rose Elixir"/>
+          <span class="card-tag">Drink</span>
+        </div>
+        <div class="card-body">
+          <h3>Rose Elixir</h3>
+          <p>Grey Goose vodka, lychee liqueur, rose water, yuzu & Champagne foam.</p>
+          <div class="card-footer">
+            <span class="price">1,512EGP</span>
+            <button class="btn-details" data-name="Rose Elixir" data-desc="Grey Goose vodka shaken with Soho lychee liqueur, hand-distilled rose water, fresh yuzu juice and topped with a delicate Moët Champagne foam. Served in a frosted coupe. Utterly elegant." data-price="1,512EGP" data-img="https://images.unsplash.com/photo-1563227812-0ea4c22e6cc8?w=800&q=80" data-tags="Cocktail · Floral · Feminine">View Details</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card" data-category="drinks">
+        <div class="card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?w=600&q=80" alt="Black Velvet"/>
+          <span class="card-tag">Drink</span>
+        </div>
+        <div class="card-body">
+          <h3>Black Velvet</h3>
+          <p>Guinness stout & Veuve Clicquot Champagne, perfectly layered.</p>
+          <div class="card-footer">
+            <span class="price">1,836EGP</span>
+            <button class="btn-details" data-name="Black Velvet" data-desc="A timeless classic reimagined with finest ingredients — Guinness Foreign Extra stout carefully layered beneath chilled Veuve Clicquot Brut in a tall Champagne flute. Bold, creamy, utterly refined." data-price="1,836EGP" data-img="https://images.unsplash.com/photo-1544145945-f90425340c7e?w=800&q=80" data-tags="Classic · Sparkling">View Details</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card" data-category="drinks">
+        <div class="card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1497534446932-c925b458314e?w=600&q=80" alt="Matcha Ceremony"/>
+          <span class="card-tag">Drink</span>
+        </div>
+        <div class="card-body">
+          <h3>Matcha Ceremony</h3>
+          <p>Ceremonial grade matcha, oat milk, vanilla syrup & amber sugar.</p>
+          <div class="card-footer">
+            <span class="price">972EGP</span>
+            <button class="btn-details" data-name="Matcha Ceremony" data-desc="Ceremonial grade Uji matcha whisked to a perfect froth, poured over cold-steamed oat milk with a touch of house vanilla syrup and topped with amber rock sugar. A moment of zen in every sip." data-price="972EGP" data-img="https://images.unsplash.com/photo-1497534446932-c925b458314e?w=800&q=80" data-tags="Non-Alcoholic · Calming">View Details</button>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /menu-grid -->
+  </section>
+
+  <!-- ═══════════════════════════════════════ FOOTER ═══════════════ -->
+   <footer>
+        <!-- Column 1: Socials and Quick Links (Anchored Left) -->
+        <div class="footer-col">
+            <div class="social-links">
+                <a href="https://facebook.com" class="social-icon">f</a>
+                <a href="https://x.com" class="social-icon">𝕏</a>
+                <a href="https://instgram.com" class="social-icon">ig</a>
+            </div>
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menues.html">Menu</a></li>
+                <li><a href="About us.html">About Us</a></li>
+                <li><a href="Contact us.html">Contact Us</a></li>
+                <li><a href="review.html">Reviews</a></li>
+            </ul>
+        </div>
+
+        <!-- Column 2: Contact Info -->
+        <div class="footer-col">
+            <h4>Contact Info</h4>
+            <div class="contact-item"><span>✉</span> support@gourmet.com</div>
+            <div class="contact-item"><span>📞</span> +20 1009435169</div>
+            <div class="contact-item"><span>📍</span> East Hub, Madinty</div>
+        </div>
+
+        <div class="footer-bottom">
+            &copy; 2026 GOURMET RESTAURANT GROUP. ALL RIGHTS RESERVED.
+        </div>
+    </footer>
+  <!-- ═══════════════════════════════════════ MODAL ════════════════ -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="modal">
+      <button class="modal-close" id="modalClose">&#10005;</button>
+      <div class="modal-img-wrap">
+        <img id="modalImg" src="" alt=""/>
+      </div>
+      <div class="modal-body">
+        <div class="modal-tags" id="modalTags"></div>
+        <h2 id="modalName"></h2>
+        <p id="modalDesc"></p>
+        <div class="modal-price-row">
+          <span class="modal-price" id="modalPrice"></span>
+          <span class="modal-line"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="menues.js"></script>
+</body>
+</html>

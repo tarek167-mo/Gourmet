@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GOURMET-reviews</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- NAV -->
+   <nav class="anim-nav">
+        <a href="index.html" class="nav-logo">
+            <div class="emblem">
+                <div class="ring-solid"></div>
+                <div class="star-center"></div>
+            </div>
+            <div class="logo-text">GOURMET</div>
+        </a>
+        
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="menues.html">Menu</a>
+            <a href="About us.html">About</a>
+            <a href="Contact us.html">Contact</a>
+            <a href="review.html">Review</a>
+            <a href="login.html">Login</a>
+            <a onclick="checkLoginBeforeReserve()" class="btn-nav-res">Book a Table</a>
+        </div>
+    </nav>
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <div class="hero-rest-name">Customer Reviews</div>
+    <div class="hero-sub">La Bella Roma · Italian Restaurant · Cairo Festival City</div>
+    <div class="hero-stats">
+      <div class="big-score">4.3</div>
+      <div class="score-meta">
+        <div class="stars-row">
+          <span class="sf">★</span><span class="sf">★</span><span class="sf">★</span><span class="sf">★</span><span class="se">★</span>
+        </div>
+        <div class="rev-count">Based on 128 reviews</div>
+      </div>
+      <div class="bars-col">
+        <div class="bar-row"><span class="bar-lbl">5</span><div class="bar-track"><div class="bar-fill" style="width:62%"></div></div></div>
+        <div class="bar-row"><span class="bar-lbl">4</span><div class="bar-track"><div class="bar-fill" style="width:20%"></div></div></div>
+        <div class="bar-row"><span class="bar-lbl">3</span><div class="bar-track"><div class="bar-fill" style="width:10%"></div></div></div>
+        <div class="bar-row"><span class="bar-lbl">2</span><div class="bar-track"><div class="bar-fill" style="width:5%"></div></div></div>
+        <div class="bar-row"><span class="bar-lbl">1</span><div class="bar-track"><div class="bar-fill" style="width:3%"></div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="page-body">
+
+    <!-- LEFT: Reviews List -->
+    <div>
+      <div class="sec-title">Recent Reviews</div>
+      <!-- card1 -->
+      <div class="rev-card">
+        <div class="rcard-top">
+          <div class="av av-g">SA</div>
+          <div><div class="r-name">Sara Ahmed</div><div class="r-date">2 days ago</div></div>
+        </div>
+        <div class="rcard-stars">
+          <span class="csf">★</span><span class="csf">★</span><span class="csf">★</span><span class="csf">★</span><span class="csf">★</span>
+        </div>
+        <div class="rcard-text">The pizza was absolutely amazing — crispy crust, perfect sauce. Staff was super friendly and the ambiance felt really cozy. Will definitely come back!</div>
+        <div class="rtags"><span class="rtag">Food</span><span class="rtag">Service</span><span class="rtag">Ambiance</span></div>
+      </div>
+      <!-- card2 -->
+      <div class="rev-card">
+        <div class="rcard-top">
+          <div class="av av-r">MK</div>
+          <div><div class="r-name">Mohamed Kamal</div><div class="r-date">1 week ago</div></div>
+        </div>
+        <div class="rcard-stars">
+          <span class="csf">★</span><span class="csf">★</span><span class="csf">★</span><span class="csf">★</span><span class="cse">★</span>
+        </div>
+        <div class="rcard-text">Good food overall, the pasta was great. Took a little longer than expected but the quality made up for it. Nice place for a family dinner.</div>
+        <div class="rtags"><span class="rtag">Food</span><span class="rtag-red rtag">Value</span></div>
+      </div>
+      <!-- card3 -->
+      <div class="rev-card">
+        <div class="rcard-top">
+          <div class="av av-g">LN</div>
+          <div><div class="r-name">Layla Nasser</div><div class="r-date">2 weeks ago</div></div>
+        </div>
+        <div class="rcard-stars">
+          <span class="csf">★</span><span class="csf">★</span><span class="csf">★</span><span class="cse">★</span><span class="cse">★</span>
+        </div>
+        <div class="rcard-text">Decent experience. The desserts were the highlight — tiramisu was excellent. Service could be faster during peak hours though.</div>
+        <div class="rtags"><span class="rtag">Desserts</span><span class="rtag-red rtag">Slow service</span></div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Form -->
+    <div>
+      <div class="form-card">
+        <div class="sec-title">Leave a Review</div>
+        <div id="formWrap">
+
+          <label class="flabel">Your name</label>
+          <input class="finput" type="text" id="uname" placeholder="e.g. Ahmed Hassan" />
+
+          <label class="flabel">Overall rating</label>
+          <div class="star-picker" id="starPicker">
+            <span class="sp" data-v="1">★</span>
+            <span class="sp" data-v="2">★</span>
+            <span class="sp" data-v="3">★</span>
+            <span class="sp" data-v="4">★</span>
+            <span class="sp" data-v="5">★</span>
+          </div>
+
+          <label class="flabel">What did you enjoy?</label>
+          <div class="tag-picks">
+            <button class="tpick" onclick="this.classList.toggle('sel')">Food quality</button>
+            <button class="tpick" onclick="this.classList.toggle('sel')">Fast service</button>
+            <button class="tpick" onclick="this.classList.toggle('sel')">Great ambiance</button>
+            <button class="tpick" onclick="this.classList.toggle('sel')">Value for money</button>
+            <button class="tpick" onclick="this.classList.toggle('sel')">Friendly staff</button>
+            <button class="tpick" onclick="this.classList.toggle('sel')">Cleanliness</button>
+          </div>
+
+          <label class="flabel">Your review</label>
+          <textarea class="finput" id="revText" placeholder="Share your experience with others..."></textarea>
+
+          <button class="submit-btn" onclick="submitReview()">Submit Review</button>
+        </div>
+
+        <div class="success-wrap" id="successWrap">
+          <div class="success-icon">🎉</div>
+          <div class="success-title">Thank you!</div>
+          <div class="success-sub">Your feedback helps others find great dining experiences.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+        <!-- Column 1: Socials and Quick Links (Anchored Left) -->
+        <div class="footer-col">
+            <div class="social-links">
+                <a href="https://facebook.com" class="social-icon">f</a>
+                <a href="https://x.com" class="social-icon">𝕏</a>
+                <a href="https://instgram.com" class="social-icon">ig</a>
+            </div>
+            <h4>Quick Links</h4>
+            <ul>
+                 <li><a href="index.html">Home</a></li>
+                <li><a href="menues.html">Menu</a></li>
+                <li><a href="About us.html">About Us</a></li>
+                <li><a href="Contact us.html">Contact Us</a></li>
+                <li><a href="review.html">Reviews</a></li>
+            </ul>
+        </div>
+
+        <!-- Column 2: Contact Info -->
+        <div class="footer-col">
+            <h4>Contact Info</h4>
+            <div class="contact-item"><span>✉</span> support@gourmet.com</div>
+            <div class="contact-item"><span>📞</span> +20 1009435169</div>
+            <div class="contact-item"><span>📍</span> East Hub, Madinty</div>
+        </div>
+
+        <div class="footer-bottom">
+            &copy; 2026 GOURMET RESTAURANT GROUP. ALL RIGHTS RESERVED.
+        </div>
+    </footer>
+  
+  <script src="script.js"></script>
+</body>
+</html>

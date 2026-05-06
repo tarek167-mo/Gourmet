@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GOURMET–Reservations </title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root {
+      --primary:   #121212;
+      --secondary: #D4A373;
+      --accent:    #9B2226;
+      --bg:        #1E1E1E;
+      --text:      #F8F9FA;
+      --card-bg:   #1a1a1a;
+      --border:    rgba(212,163,115,0.25);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      background: var(--bg); 
+      color: var(--text); 
+      font-family: 'Poppins', sans-serif; 
+      padding-top: 50px; /* Prevents nav overlap */
+    }
+
+    /* NAVBAR */
+    @keyframes fadeInDown {
+        from { opacity: 0; transform: translateY(-30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .anim-nav { animation: fadeInDown 1s ease forwards; }
+
+    nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        padding: 15px 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(18, 18, 18, 0.95);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        box-sizing: border-box;
+        border-bottom: 1px solid rgba(212, 163, 115, 0.1);
+    }
+
+    .nav-logo {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    .emblem {
+        position: relative;
+        width: 35px;
+        height: 35px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .ring-solid {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border: 1px solid #D4A373;
+        border-radius: 50%;
+    }
+
+    .star-center {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        background-color: #D4A373;
+        clip-path: polygon(50% 0%, 65% 35%, 100% 50%, 65% 65%, 50% 100%, 35% 65%, 0% 50%, 35% 35%);
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .nav-logo:hover .star-center { transform: rotate(180deg) scale(1.2); }
+
+    .logo-text {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 22px;
+        letter-spacing: 4px;
+        color: #FAEDCD;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 30px;
+        align-items: center;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        color: #FAEDCD;
+        font-size: 11px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        transition: 0.3s;
+        opacity: 0.7;
+        cursor: pointer;
+    }
+
+    .nav-links a:hover { opacity: 1; color: #D4A373; }
+
+    .btn-nav-res {
+        border: 1px solid #D4A373;
+        padding: 10px 20px;
+        transition: 0.4s;
+        color: #D4A373;
+        text-decoration: none;
+    }
+
+    .btn-nav-res:hover {
+        background: #D4A373;
+        color: #121212 !important;
+    }
+
+    /* HERO */
+    .hero { background: linear-gradient(135deg, var(--primary) 0%, #2a0a0b 100%); padding: 60px 0; text-align: center; }
+    .hero-badge { display: inline-block; border: 1px solid var(--secondary); color: var(--secondary); font-size: .75rem; letter-spacing: 3px; text-transform: uppercase; padding: 6px 18px; border-radius: 50px; margin-bottom: 20px; }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4rem); color: var(--text); }
+    .hero h1 span { color: var(--secondary); }
+    .hero p { color: rgba(248,249,250,.65); margin-top: 14px; }
+
+    /* FORM & CARDS */
+    .form-section { padding: 40px 0 80px; }
+    .form-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 48px; box-shadow: 0 20px 60px rgba(0,0,0,.5); }
+    .section-label { font-size: .75rem; letter-spacing: 3px; color: var(--secondary); text-transform: uppercase; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 8px; }
+    .divider { width: 50px; height: 2px; background: var(--secondary); margin: 10px 0 32px; }
+
+    .form-label { color: rgba(248,249,250,.8); font-size: .85rem; font-weight: 500; margin-bottom: 8px; }
+    .form-label i { color: var(--secondary); margin-right: 6px; }
+    
+    .form-control, .form-select { background: #242424; border: 1px solid var(--border); color: var(--text) !important; border-radius: 8px; padding: 12px 16px; }
+    .form-control:focus, .form-select:focus { background: #2a2a2a; border-color: var(--secondary); box-shadow: 0 0 0 3px rgba(212,163,115,.15); }
+    .form-control::placeholder { color: rgba(248,249,250,.35); }
+    
+    input[type="date"]::-webkit-calendar-picker-indicator,
+    input[type="time"]::-webkit-calendar-picker-indicator { filter: invert(1); opacity: .7; cursor: pointer; }
+
+    .btn-submit { background: linear-gradient(135deg, var(--secondary), #c4904f); color: var(--primary); border: none; border-radius: 8px; padding: 14px; font-size: 1rem; font-weight: 700; width: 100%; cursor: pointer; transition: 0.3s; }
+    .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(212,163,115,.35); }
+
+    .info-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 28px; margin-bottom: 20px; transition: 0.3s; }
+    .info-card:hover { transform: translateX(4px); border-color: var(--secondary); }
+    .info-card i { font-size: 1.8rem; color: var(--secondary); margin-bottom: 12px; display: block; }
+    .info-card h5 { font-family: 'Playfair Display', serif; margin-bottom: 8px; }
+    .info-card p { color: rgba(248,249,250,.8); font-size: .875rem; line-height: 1.6; }
+
+    /* FOOTER */
+    footer {
+        background-color: #0d0d0d;
+        padding: 80px 50px 30px;
+        border-top: 1px solid rgba(212, 163, 115, 0.1);
+        display: grid;
+        grid-template-columns: 1fr 1fr; 
+        gap: 40px;
+    }
+
+    .footer-col h4 { color: #D4A373; font-family: 'Cormorant Garamond', serif; font-size: 20px; margin-bottom: 25px; letter-spacing: 2px; text-transform: uppercase; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 15px; }
+    .footer-col ul li a { color: #FAEDCD; text-decoration: none; font-size: 14px; opacity: 0.6; transition: 0.3s; }
+    .footer-col ul li a:hover { opacity: 1; color: #D4A373; }
+
+    .social-links { display: flex; gap: 15px; margin-bottom: 30px; }
+    .social-icon { width: 35px; height: 35px; border-radius: 50%; background: rgba(212, 163, 115, 0.05); display: flex; justify-content: center; align-items: center; color: #FAEDCD; text-decoration: none; border: 1px solid rgba(212, 163, 115, 0.2); transition: 0.3s; }
+    .social-icon:hover { background: #D4A373; color: #121212; transform: translateY(-3px); }
+
+    .contact-item { display: flex; align-items: center; gap: 12px; margin-bottom: 15px; font-size: 14px; opacity: 0.8; }
+    .contact-item span { color: #D4A373; }
+
+    .footer-bottom { grid-column: 1 / -1; text-align: center; padding-top: 60px; font-size: 11px; opacity: 0.4; letter-spacing: 2px; text-transform: uppercase; }
+
+    /* CONFIRMATION */
+    #confirmationCard { display: none; text-align: center; }
+    .confirm-icon { width: 80px; height: 80px; border-radius: 50%; background: #4caf5020; border: 2px solid #4caf50; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; font-size: 2rem; color: #4caf50; }
+    .confirm-details { background: #242424; border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-top: 20px; text-align: left; }
+    .detail-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+
+    /* ANIMATIONS */
+    .fade-up { animation: fadeInUp .8s ease forwards; }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="anim-nav">
+    <a href="index.html" class="nav-logo">
+        <div class="emblem">
+            <div class="ring-solid"></div>
+            <div class="star-center"></div>
+        </div>
+        <div class="logo-text">GOURMET</div>
+    </a>
+    
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="menues.html">Menu</a>
+        <a href="About us.html">About</a>
+        <a href="Contact us.html">Contact</a>
+        <a href="review.html">Review</a>
+        <a href="login.html">Login</a>
+        <a href="#" onclick="checkLoginBeforeReserve()" class="btn-nav-res">Book a Table</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge"><i class="bi bi-star-fill me-2"></i>Premium Dining Experience</div>
+    <h1>Reserve Your <span>Table</span></h1>
+    <p>An unforgettable evening begins with a single reservation</p>
+  </div>
+</section>
+
+<!-- MAIN -->
+<section class="form-section">
+  <div class="container">
+    <div class="row g-4 justify-content-center">
+
+      <!-- Info Cards -->
+      <div class="col-lg-4">
+        <div class="info-card fade-up">
+          <i class="bi bi-clock-fill"></i>
+          <h5>Opening Hours</h5>
+          <p>Mon – Thu: 12:00 PM – 10:00 PM<br>
+             Fri – Sat: 12:00 PM – 11:30 PM<br>
+             Sunday: 1:00 PM – 9:00 PM</p>
+        </div>
+        <div class="info-card fade-up">
+          <i class="bi bi-geo-alt-fill"></i>
+          <h5>Location</h5>
+          <p>123 Gourmet Street, Downtown<br>
+             Cairo, Egypt<br>
+             <a href="tel:+201009435169" style="color:var(--secondary); text-decoration:none;">+20 100 943 5169</a></p>
+        </div>
+        <div class="info-card fade-up">
+          <i class="bi bi-info-circle-fill"></i>
+          <h5>Good to Know</h5>
+          <p>Reservations are held for 15 minutes. For groups over 10, please call us directly.</p>
+        </div>
+      </div>
+
+      <!-- Form Card -->
+      <div class="col-lg-8">
+        <div class="form-card fade-up">
+
+          <div id="formView">
+            <p class="section-label"><i class="bi bi-calendar3 me-1"></i> Make a Reservation</p>
+            <h2 class="section-title">Book Your Table</h2>
+            <div class="divider"></div>
+
+            <form id="reservationForm" class="row g-4" novalidate>
+                <div class="col-md-6">
+                  <label class="form-label"><i class="bi bi-person-fill"></i> Full Name</label>
+                  <input type="text" class="form-control" id="guestName" placeholder="e.g. Ahmed Hassan" required/>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label"><i class="bi bi-telephone-fill"></i> Phone Number</label>
+                  <input type="tel" class="form-control" id="guestPhone" placeholder="e.g. 01012345678" required/>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label"><i class="bi bi-calendar-date-fill"></i> Date</label>
+                  <input type="date" class="form-control" id="resDate" required/>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label"><i class="bi bi-clock-fill"></i> Time</label>
+                  <input type="time" class="form-control" id="resTime" required/>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label"><i class="bi bi-people-fill"></i> Guests</label>
+                  <select class="form-select" id="partySize" required>
+                    <option value="">Select guests...</option>
+                    <option value="2">2 Persons</option>
+                    <option value="4">4 Persons</option>
+                    <option value="6">6 Persons</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label"><i class="bi bi-chat-dots-fill"></i> Requests</label>
+                  <input type="text" class="form-control" id="specialReq" placeholder="Optional..."/>
+                </div>
+                <div class="col-12 mt-4">
+                  <button type="submit" class="btn-submit" id="submitBtn">Confirm Reservation</button>
+                </div>
+            </form>
+          </div>
+
+          <!-- CONFIRMATION VIEW -->
+          <div id="confirmationCard">
+            <div class="confirm-icon"><i class="bi bi-check-lg"></i></div>
+            <h2 class="confirm-title">Booking Confirmed!</h2>
+            <p>We look forward to seeing you.</p>
+            <div class="confirm-details" id="confirmDetails"></div>
+            <button class="btn-submit mt-4" onclick="location.reload()">Make Another Booking</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-col">
+        <div class="social-links">
+            <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="social-icon"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+        </div>
+        <h4>Quick Links</h4>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menues.html">Menu</a></li>
+            <li><a href="About us.html">About Us</a></li>
+            <li><a href="Contact us.html">Contact Us</a></li>
+        </ul>
+    </div>
+    <div class="footer-col">
+        <h4>Contact Info</h4>
+        <div class="contact-item"><span><i class="bi bi-envelope"></i></span> support@gourmet.com</div>
+        <div class="contact-item"><span><i class="bi bi-telephone"></i></span> +20 100 943 5169</div>
+        <div class="contact-item"><span><i class="bi bi-geo-alt"></i></span> East Hub, Madinty</div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2026 GOURMET RESTAURANT GROUP.
+    </div>
+</footer>
+
+<script>
+  // Auth Check
+  function checkLoginBeforeReserve() {
+      const isLoggedIn = localStorage.getItem('isLoggedIn');
+      if (!isLoggedIn) {
+          alert("Please login first to book a table.");
+          window.location.href = "login.html";
+      } else {
+          window.scrollTo({ top: document.querySelector('.form-card').offsetTop - 100, behavior: 'smooth' });
+      }
+  }
+
+  // Min Date
+  document.getElementById('resDate').min = new Date().toISOString().split('T')[0];
+
+  // Form Submission
+  document.getElementById('reservationForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    btn.innerText = "Processing...";
+    btn.disabled = true;
+
+    setTimeout(() => {
+        document.getElementById('formView').style.display = 'none';
+        document.getElementById('confirmationCard').style.display = 'block';
+        
+        const details = `
+            <div class="detail-row"><span>Name:</span> <span>${document.getElementById('guestName').value}</span></div>
+            <div class="detail-row"><span>Date:</span> <span>${document.getElementById('resDate').value}</span></div>
+            <div class="detail-row"><span>Time:</span> <span>${document.getElementById('resTime').value}</span></div>
+        `;
+        document.getElementById('confirmDetails').innerHTML = details;
+    }, 1500);
+  });
+</script>
+
+</body>
+</html>

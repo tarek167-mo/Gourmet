@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gourmet | Fine Dining Excellence</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Jost:wght@300;400;500&display=swap');
+
+        /* --- GLOBAL STYLES --- */
+        body, html {
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #FAEDCD;
+            font-family: 'Jost', sans-serif;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .reveal { opacity: 0; } 
+        
+        .anim-nav { animation: fadeInDown 1s ease forwards; }
+        .anim-hero { animation: fadeInUp 1.2s ease forwards 0.3s; }
+        .anim-card-1 { animation: fadeInUp 1s ease forwards 0.6s; }
+        .anim-card-2 { animation: fadeInUp 1s ease forwards 0.8s; }
+        .anim-card-3 { animation: fadeInUp 1s ease forwards 1s; }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(18, 18, 18, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-sizing: border-box;
+            border-bottom: 1px solid rgba(212, 163, 115, 0.1);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .emblem {
+            position: relative;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .ring-solid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 1px solid #D4A373;
+            border-radius: 50%;
+        }
+
+        .star-center {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background-color: #D4A373;
+            clip-path: polygon(50% 0%, 65% 35%, 100% 50%, 65% 65%, 50% 100%, 35% 65%, 0% 50%, 35% 35%);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-logo:hover .star-center { transform: rotate(180deg) scale(1.2); }
+
+        .logo-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            letter-spacing: 4px;
+            color: #FAEDCD;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #FAEDCD;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: 0.3s;
+            opacity: 0.7;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover { opacity: 1; color: #D4A373; }
+
+        .btn-nav-res {
+            border: 1px solid #D4A373;
+            padding: 10px 20px;
+            transition: 0.4s;
+        }
+
+        .btn-nav-res:hover {
+            background: #D4A373;
+            color: #121212 !important;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), 
+                        url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=2070');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(50px, 10vw, 90px);
+            margin: 0;
+            letter-spacing: 12px;
+            font-weight: 400;
+            text-transform: uppercase;
+        }
+
+        .cta-btn {
+            margin-top: 40px;
+            padding: 18px 45px;
+            background: #D4A373;
+            color: #1a1208;
+            border: none;
+            cursor: pointer;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 500;
+            font-family: 'Jost', sans-serif;
+            transition: 0.4s;
+        }
+
+        .cta-btn:hover {
+            background: #FAEDCD;
+            transform: translateY(-3px);
+        }
+
+        /* --- FEATURED SECTION --- */
+        .featured-section {
+            padding: 100px 50px;
+            background-color: #121212;
+            text-align: center;
+        }
+
+        .section-intro { margin-bottom: 60px; }
+
+        .sub-title {
+            color: #D4A373;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 12px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .main-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 45px;
+            font-weight: 400;
+            margin: 0;
+            color: #FAEDCD;
+        }
+
+        .gold-divider {
+            width: 60px;
+            height: 1px;
+            background: #D4A373;
+            margin: 20px auto;
+        }
+
+        .dish-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .dish-card {
+            background: #1a1a1a;
+            transition: transform 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(212, 163, 115, 0.05);
+        }
+
+        .dish-image {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+        }
+
+        .dish-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .dish-card:hover .dish-image img { transform: scale(1.1); }
+
+        .dish-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(18, 18, 18, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: 0.4s;
+        }
+
+        .dish-card:hover .dish-overlay { opacity: 1; }
+
+        .view-btn {
+            padding: 12px 25px;
+            border: 1px solid #D4A373;
+            color: #D4A373;
+            text-decoration: none;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .dish-info { padding: 30px 20px; }
+
+        .dish-info h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            margin: 0 0 10px 0;
+            font-weight: 400;
+        }
+
+        .dish-info p {
+            font-size: 14px;
+            opacity: 0.7;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .price { color: #D4A373; font-weight: 500; font-size: 18px; }
+
+        /* --- FOOTER (REDUCED TO 2 COLUMNS) --- */
+        footer {
+            background-color: #0d0d0d;
+            padding: 80px 50px 30px;
+            border-top: 1px solid rgba(212, 163, 115, 0.1);
+            display: grid;
+            /* Updated to 2-column layout to fill space after removing support */
+            grid-template-columns: 1fr 1fr; 
+            gap: 40px;
+        }
+
+        .footer-col h4 {
+            color: #D4A373;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            margin-bottom: 25px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .footer-col ul { list-style: none; padding: 0; margin: 0; }
+        .footer-col ul li { margin-bottom: 15px; }
+
+        .footer-col ul li a {
+            color: #FAEDCD;
+            text-decoration: none;
+            font-size: 14px;
+            opacity: 0.6;
+            transition: 0.3s;
+        }
+
+        .footer-col ul li a:hover { opacity: 1; color: #D4A373; }
+
+        .social-links { 
+            display: flex; 
+            gap: 15px; 
+            margin-bottom: 30px; 
+            justify-content: flex-start; 
+        }
+
+        .social-icon {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: rgba(212, 163, 115, 0.05);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #FAEDCD;
+            text-decoration: none;
+            font-size: 12px;
+            transition: 0.3s;
+            border: 1px solid rgba(212, 163, 115, 0.2);
+        }
+
+        .social-icon:hover {
+            background: #D4A373;
+            color: #121212;
+            transform: translateY(-3px);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            font-size: 14px;
+            opacity: 0.7;
+        }
+
+        .contact-item span { color: #D4A373; }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 45px;
+            height: 45px;
+            background: #D4A373;
+            color: #121212;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            font-size: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: 0.3s;
+            z-index: 100;
+        }
+
+        .footer-bottom {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding-top: 60px;
+            font-size: 11px;
+            opacity: 0.4;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* --- NOTIFICATION --- */
+        #mainAlert {
+            position: fixed;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #D4A373;
+            color: #1a1208;
+            padding: 15px 40px;
+            z-index: 2000;
+            transition: 0.5s;
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="mainAlert">Welcome</div>
+
+    <nav class="anim-nav">
+        <a href="index.html" class="nav-logo">
+            <div class="emblem">
+                <div class="ring-solid"></div>
+                <div class="star-center"></div>
+            </div>
+            <div class="logo-text">GOURMET</div>
+        </a>
+        
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="menues.html">Menu</a>
+            <a href="About us.html">About</a>
+            <a href="Contact us.html">Contact</a>
+            <a href="review.html">Review</a>
+            <a href="login.html">Login</a>
+            <a onclick="checkLoginBeforeReserve()" class="btn-nav-res">Book a Table</a>
+        </div>
+    </nav>
+    
+    <header class="hero reveal anim-hero">
+        <p style="letter-spacing: 5px; text-transform: uppercase; color: #D4A373;">The Art of Gastronomy</p>
+        <h1>Exquisite Dining</h1>
+        <button onclick="checkLoginBeforeReserve()" class="cta-btn">Make a Reservation</button>
+    </header>
+
+    <section class="featured-section">
+        <div class="section-intro">
+            <span class="sub-title">Chef's Selection</span>
+            <h2 class="main-title">Seasonal Masterpieces</h2>
+            <div class="gold-divider"></div>
+        </div>
+
+        <div class="dish-grid">
+            <div class="dish-card reveal anim-card-1">
+                <div class="dish-image">
+                    <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&q=80" alt="Wagyu Gold Burger"/>
+                    <div class="dish-overlay"><a href="menues.html" class="view-btn">View Details</a></div>
+                </div>
+                <div class="dish-info">
+                    <h3>Wagyu Gold</h3>
+                    <p>A5 Wagyu patty, aged cheddar, sautéed foie gras & black garlic aioli.</p>
+                    <span class="price">3,888EGP</span>
+                </div>
+            </div>
+
+            <div class="dish-card reveal anim-card-2">
+                <div class="dish-image">
+                    <img src="https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?w=600&q=80" alt="Lobster Royale Pizza"/>
+                    <div class="dish-overlay"><a href="menues.html" class="view-btn">View Details</a></div>
+                </div>
+                <div class="dish-info">
+                    <h3>Lobster Royale</h3>
+                    <p>Saffron cream, Maine lobster, tarragon oil and Ossetra caviar pearls.</p>
+                    <span class="price">4,806EGP</span>
+                </div>
+            </div>
+
+            <div class="dish-card reveal anim-card-3">
+                <div class="dish-image">
+                     <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?w=600&q=80" alt="Black Velvet"/>
+                    <div class="dish-overlay"><a href="menues.html" class="view-btn">View Details</a></div>
+                </div>
+                <div class="dish-info">
+                    <h3>Black Velvet</h3>
+                    <p>Guinness stout & Veuve Clicquot Champagne, perfectly layered.</p>
+                    <span class="price">1,836EGP</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <!-- Column 1: Socials and Quick Links (Anchored Left) -->
+        <div class="footer-col">
+            <div class="social-links">
+                <a href="https://facebook.com" class="social-icon">f</a>
+                <a href="https://x.com" class="social-icon">𝕏</a>
+                <a href="https://instgram.com" class="social-icon">ig</a>
+            </div>
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menues.html">Menu</a></li>
+                <li><a href="About us.html">About Us</a></li>
+                <li><a href="Contact us.html">Contact Us</a></li>
+                <li><a href="review.html">Reviews</a></li>
+            </ul>
+        </div>
+
+        <!-- Column 2: Contact Info -->
+        <div class="footer-col">
+            <h4>Contact Info</h4>
+            <div class="contact-item"><span>✉</span> support@gourmet.com</div>
+            <div class="contact-item"><span>📞</span> +20 1009435169</div>
+            <div class="contact-item"><span>📍</span> East Hub, Madinty</div>
+        </div>
+
+        <div class="footer-bottom">
+            &copy; 2026 GOURMET RESTAURANT GROUP. ALL RIGHTS RESERVED.
+        </div>
+    </footer>
+
+    <a href="#" class="scroll-top">↑</a>
+
+    <script>
+        function showNotification(msg) {
+    const alertBox = document.getElementById('mainAlert');
+    alertBox.textContent = msg;
+    alertBox.style.top = '20px';
+    setTimeout(() => { alertBox.style.top = '-100px'; }, 3000);
+}
+
+function checkLoginBeforeReserve() {
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+
+    if (isLoggedIn === 'true') {
+        // User is already logged in, go straight to reservations
+        window.location.href = 'reservation.html';
+    } else {
+        // 1. Remember that the user wanted to go to reservations
+        localStorage.setItem('redirectAfterLogin', 'reservation.html');
+        
+        // 2. Notify and redirect to login
+        showNotification("Please login to reserve a table");
+        setTimeout(() => { 
+            window.location.href = 'login.html'; 
+        }, 1500);
+    }
+}
+
+window.onload = () => {
+    setTimeout(() => { showNotification("Welcome to Gourmet Excellence"); }, 1000);
+};
+    </script>
+</body>
+</html>
