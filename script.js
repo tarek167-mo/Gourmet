@@ -76,3 +76,22 @@ function checkLoginBeforeReserve() {
         }, 1500);
     }
 }
+// Mobile Menu Toggle Logic
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+
+if (navToggle) {
+    navToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        // Switch between hamburger and X icon
+        navToggle.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+    });
+}
+
+// Close menu when clicking a link
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        navToggle.textContent = '☰';
+    });
+});
