@@ -55,3 +55,29 @@
         padding: 50px 30px;
     }
 }
+.contact-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 100px 50px;
+    background-color: #1E1E1E; /* Match your dark theme[cite: 16] */
+    color: #F8F9FA;
+    gap: 50px;
+}
+
+.contact-form-wrapper {
+    flex: 1;
+    background: #121212;
+    padding: 40px;
+    border-radius: 15px;
+    border: 1px solid rgba(212, 163, 115, 0.2);
+}
+
+/* Fix those input boxes[cite: 16] */
+input, textarea {
+    width: 100%;
+    background: #1E1E1E;
+    border: 1px solid #2a2a2a;
+    color: white;
+    padding: 12px;
+    margin-bottom: 20px;
+}
