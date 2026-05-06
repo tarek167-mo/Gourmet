@@ -195,3 +195,31 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   
   });
+document.addEventListener('DOMContentLoaded', () => {
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    // Toggle menu
+    navToggle?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        navLinks.classList.toggle('open');
+        // Switch icon between hamburger and X
+        navToggle.textContent = navLinks.classList.contains('open') ? '✕' : '☰';
+    });
+
+    // Close menu when clicking a link
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('open');
+            navToggle.textContent = '☰';
+        });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (navLinks.classList.contains('open') && !navLinks.contains(e.target) && e.target !== navToggle) {
+            navLinks.classList.remove('open');
+            navToggle.textContent = '☰';
+        }
+    });
+});
