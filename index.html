@@ -126,6 +126,21 @@
             color: #121212 !important;
         }
 
+        /* --- MOBILE MENU TOGGLE --- */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .menu-toggle .bar {
+            width: 25px;
+            height: 2px;
+            background-color: #D4A373;
+            transition: 0.3s;
+        }
+
         /* --- HERO SECTION --- */
         .hero {
             height: 100vh;
@@ -138,11 +153,12 @@
             justify-content: center;
             align-items: center;
             text-align: center;
+            padding: 0 20px;
         }
 
         .hero h1 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(50px, 10vw, 90px);
+            font-size: clamp(40px, 8vw, 90px);
             margin: 0;
             letter-spacing: 12px;
             font-weight: 400;
@@ -273,13 +289,12 @@
 
         .price { color: #D4A373; font-weight: 500; font-size: 18px; }
 
-        /* --- FOOTER (REDUCED TO 2 COLUMNS) --- */
+        /* --- FOOTER --- */
         footer {
             background-color: #0d0d0d;
             padding: 80px 50px 30px;
             border-top: 1px solid rgba(212, 163, 115, 0.1);
             display: grid;
-            /* Updated to 2-column layout to fill space after removing support */
             grid-template-columns: 1fr 1fr; 
             gap: 40px;
         }
@@ -389,6 +404,43 @@
             font-size: 11px;
             letter-spacing: 2px;
         }
+
+        /* --- MOBILE MEDIA QUERY (UPDATED) --- */
+        @media screen and (max-width: 768px) {
+            nav {
+                padding: 15px 25px;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none; /* Hide on mobile by default */
+                flex-direction: column;
+                position: absolute;
+                top: 66px;
+                left: 0;
+                width: 100%;
+                background: rgba(18, 18, 18, 0.98);
+                padding: 40px 0;
+                gap: 25px;
+                border-bottom: 1px solid rgba(212, 163, 115, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex; /* Show when active */
+            }
+
+            .featured-section {
+                padding: 60px 20px;
+            }
+
+            footer {
+                grid-template-columns: 1fr;
+                padding: 60px 20px 30px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -403,8 +455,15 @@
             </div>
             <div class="logo-text">GOURMET</div>
         </a>
+
+        <!-- Hamburger Icon -->
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
         
-        <div class="nav-links">
+        <div class="nav-links" id="nav-links">
             <a href="index.html">Home</a>
             <a href="menues.html">Menu</a>
             <a href="About us.html">About</a>
@@ -468,7 +527,6 @@
     </section>
 
     <footer>
-        <!-- Column 1: Socials and Quick Links (Anchored Left) -->
         <div class="footer-col">
             <div class="social-links">
                 <a href="https://facebook.com" class="social-icon">f</a>
@@ -485,7 +543,6 @@
             </ul>
         </div>
 
-        <!-- Column 2: Contact Info -->
         <div class="footer-col">
             <h4>Contact Info</h4>
             <div class="contact-item"><span>✉</span> support@gourmet.com</div>
@@ -501,34 +558,38 @@
     <a href="#" class="scroll-top">↑</a>
 
     <script>
+        // Toggle Mobile Menu Logic
+        const menuToggle = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
         function showNotification(msg) {
-    const alertBox = document.getElementById('mainAlert');
-    alertBox.textContent = msg;
-    alertBox.style.top = '20px';
-    setTimeout(() => { alertBox.style.top = '-100px'; }, 3000);
-}
+            const alertBox = document.getElementById('mainAlert');
+            alertBox.textContent = msg;
+            alertBox.style.top = '20px';
+            setTimeout(() => { alertBox.style.top = '-100px'; }, 3000);
+        }
 
-function checkLoginBeforeReserve() {
-    const isLoggedIn = localStorage.getItem('isLoggedIn');
+        function checkLoginBeforeReserve() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
 
-    if (isLoggedIn === 'true') {
-        // User is already logged in, go straight to reservations
-        window.location.href = 'reservation.html';
-    } else {
-        // 1. Remember that the user wanted to go to reservations
-        localStorage.setItem('redirectAfterLogin', 'reservation.html');
-        
-        // 2. Notify and redirect to login
-        showNotification("Please login to reserve a table");
-        setTimeout(() => { 
-            window.location.href = 'login.html'; 
-        }, 1500);
-    }
-}
+            if (isLoggedIn === 'true') {
+                window.location.href = 'reservation.html';
+            } else {
+                localStorage.setItem('redirectAfterLogin', 'reservation.html');
+                showNotification("Please login to reserve a table");
+                setTimeout(() => { 
+                    window.location.href = 'login.html'; 
+                }, 1500);
+            }
+        }
 
-window.onload = () => {
-    setTimeout(() => { showNotification("Welcome to Gourmet Excellence"); }, 1000);
-};
+        window.onload = () => {
+            setTimeout(() => { showNotification("Welcome to Gourmet Excellence"); }, 1000);
+        };
     </script>
 </body>
 </html>
