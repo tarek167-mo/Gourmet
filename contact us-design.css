@@ -1,6 +1,70 @@
-/* =========================================
-   7. MOBILE RESPONSIVENESS (Updated)
-   ========================================= */
+/* --- Base Theme --- */
+body {
+    background-color: #1E1E1E; /* Fix for white background in screenshot */
+    color: #F8F9FA;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding-top: 70px;
+}
+
+/* --- Navigation --- */
+nav {
+    position: fixed;
+    top: 0; width: 100%;
+    padding: 15px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(18, 18, 18, 0.95);
+    z-index: 1000;
+}
+
+.nav-links a {
+    color: #FAEDCD;
+    text-decoration: none;
+    margin-left: 25px;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+/* --- Contact Layout --- */
+.contact-container {
+    display: flex;
+    max-width: 1100px;
+    margin: 60px auto;
+    gap: 40px;
+    padding: 0 20px;
+}
+
+.contact-form-wrapper {
+    flex: 1;
+    background: #121212;
+    padding: 40px;
+    border-radius: 12px;
+    border: 1px solid rgba(212, 163, 115, 0.1);
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    background: #1E1E1E;
+    border: 1px solid #2a2a2a;
+    color: white;
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+}
+
+.btn-submit {
+    background: #D4A373;
+    color: #121212;
+    border: none;
+    padding: 12px 25px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+}
+
+/* --- Mobile Responsiveness[cite: 22] --- */
 .menu-toggle {
     display: none;
     flex-direction: column;
@@ -12,72 +76,24 @@
     width: 25px;
     height: 2px;
     background-color: #D4A373;
-    transition: 0.3s;
 }
 
 @media (max-width: 900px) {
-    nav { padding: 15px 25px; }
-
     .menu-toggle { display: flex; }
 
     .nav-links {
-        display: none; /* Hidden by default on mobile */
+        display: none;
         flex-direction: column;
         position: absolute;
-        top: 66px;
-        left: 0;
-        width: 100%;
+        top: 66px; left: 0; width: 100%;
         background: rgba(18, 18, 18, 0.98);
         padding: 40px 0;
-        gap: 25px;
         text-align: center;
-        border-bottom: 1px solid rgba(212, 163, 115, 0.1);
     }
 
-    .nav-links.active {
-        display: flex; /* Shown when toggled */
-    }
+    .nav-links.active { display: flex; }
 
-    .container, .contact-container {
+    .contact-container {
         flex-direction: column;
-        gap: 3rem;
     }
-
-    .hero h1 { font-size: 3rem; }
-
-    .contact-form-wrapper {
-        width: 100%;
-        padding: 2rem 1.5rem;
-    }
-
-    footer {
-        grid-template-columns: 1fr; /* Stack footer columns */
-        padding: 50px 30px;
-    }
-}
-.contact-container {
-    display: flex;
-    justify-content: space-between;
-    padding: 100px 50px;
-    background-color: #1E1E1E; /* Match your dark theme[cite: 16] */
-    color: #F8F9FA;
-    gap: 50px;
-}
-
-.contact-form-wrapper {
-    flex: 1;
-    background: #121212;
-    padding: 40px;
-    border-radius: 15px;
-    border: 1px solid rgba(212, 163, 115, 0.2);
-}
-
-/* Fix those input boxes[cite: 16] */
-input, textarea {
-    width: 100%;
-    background: #1E1E1E;
-    border: 1px solid #2a2a2a;
-    color: white;
-    padding: 12px;
-    margin-bottom: 20px;
 }
