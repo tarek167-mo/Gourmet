@@ -16,9 +16,16 @@
             </div>
             <div class="logo-text">GOURMET</div>
         </a>
+
+        <!-- Hamburger Icon -->
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
         
-        <div class="nav-links">
-          <a href="index.html">Home</a>
+        <div class="nav-links" id="nav-links">
+           <a href="index.html">Home</a>
             <a href="menues.html">Menu</a>
             <a href="About us.html">About</a>
             <a href="Contact us.html">Contact</a>
@@ -46,15 +53,13 @@
                 <a href="menues.html" class="btn">View Our Menu</a>
             </div>
            <div class="about-image fade-in">
-    <img src="https://images.unsplash.com/photo-1579027989536-b7b1f875659b?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Delicious premium food" class="real-image">
-</div>
+                <img src="https://images.unsplash.com/photo-1579027989536-b7b1f875659b?q=80&w=1170&auto=format&fit=crop" alt="Delicious premium food" class="real-image">
             </div>
         </div>
     </main>
 
     <!-- Footer -->
     <footer>
-        <!-- Column 1: Socials and Quick Links (Anchored Left) -->
         <div class="footer-col">
             <div class="social-links">
                 <a href="https://facebook.com" class="social-icon">f</a>
@@ -63,7 +68,7 @@
             </div>
             <h4>Quick Links</h4>
             <ul>
-                 <li><a href="index.html">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="menues.html">Menu</a></li>
                 <li><a href="About us.html">About Us</a></li>
                 <li><a href="Contact us.html">Contact Us</a></li>
@@ -71,7 +76,6 @@
             </ul>
         </div>
 
-        <!-- Column 2: Contact Info -->
         <div class="footer-col">
             <h4>Contact Info</h4>
             <div class="contact-item"><span>✉</span> support@gourmet.com</div>
@@ -85,51 +89,53 @@
     </footer>
 
    <script>
+    // Toggle Mobile Menu Logic
+    const menuToggle = document.getElementById('mobile-menu');
+    const navLinks = document.getElementById('nav-links');
+
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+
     function showNotification(msg) {
-    // Create the alert element if it doesn't exist
-    let alertBox = document.getElementById('mainAlert');
-    if (!alertBox) {
-        alertBox = document.createElement('div');
-        alertBox.id = 'mainAlert';
-        // Applying styles directly to match your theme
-        Object.assign(alertBox.style, {
-            position: 'fixed',
-            top: '-100px',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            background: '#D4A373',
-            color: '#1a1208',
-            padding: '15px 40px',
-            zIndex: '2000',
-            transition: '0.5s',
-            textTransform: 'uppercase',
-            fontSize: '11px',
-            letterSpacing: '2px'
-        });
-        document.body.appendChild(alertBox);
-    }
-    
-    alertBox.textContent = msg;
-    alertBox.style.top = '20px';
-    setTimeout(() => { alertBox.style.top = '-100px'; }, 3000);
-}
-
-function checkLoginBeforeReserve() {
-    const isLoggedIn = localStorage.getItem('isLoggedIn');
-
-    if (isLoggedIn === 'true') {
-        window.location.href = 'reservation.html';
-    } else {
-        // Remember the intent for the login page redirect logic
-        localStorage.setItem('redirectAfterLogin', 'reservation.html');
+        let alertBox = document.getElementById('mainAlert');
+        if (!alertBox) {
+            alertBox = document.createElement('div');
+            alertBox.id = 'mainAlert';
+            Object.assign(alertBox.style, {
+                position: 'fixed',
+                top: '-100px',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                background: '#D4A373',
+                color: '#1a1208',
+                padding: '15px 40px',
+                zIndex: '2000',
+                transition: '0.5s',
+                textTransform: 'uppercase',
+                fontSize: '11px',
+                letterSpacing: '2px'
+            });
+            document.body.appendChild(alertBox);
+        }
         
-        showNotification("Please login to reserve a table");
-        setTimeout(() => { 
-            window.location.href = 'login.html'; 
-        }, 1500);
+        alertBox.textContent = msg;
+        alertBox.style.top = '20px';
+        setTimeout(() => { alertBox.style.top = '-100px'; }, 3000);
     }
-}
 
+    function checkLoginBeforeReserve() {
+        const isLoggedIn = localStorage.getItem('isLoggedIn');
+        if (isLoggedIn === 'true') {
+            window.location.href = 'reservation.html';
+        } else {
+            localStorage.setItem('redirectAfterLogin', 'reservation.html');
+            showNotification("Please login to reserve a table");
+            setTimeout(() => { 
+                window.location.href = 'login.html'; 
+            }, 1500);
+        }
+    }
    </script>
 </body>
 </html>
