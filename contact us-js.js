@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Mobile Menu Toggle Logic
     const menuToggle = document.getElementById('mobile-menu');
     const navLinks = document.getElementById('nav-links');
 
@@ -9,14 +8,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Existing Form Submission Logic
     const contactForm = document.querySelector('.contact-form');
     if (contactForm) {
         contactForm.addEventListener('submit', function(event) {
             event.preventDefault(); 
-            // ... (rest of your existing code)
             this.reset();
-            showNotification("Message Sent Successfully!");
+            alert("Message Sent Successfully!");
         });
     }
 });
