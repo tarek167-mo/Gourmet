@@ -470,3 +470,51 @@ footer {
             letter-spacing: 2px;
             text-transform: uppercase;
         }
+/* --- Hamburger Button Style --- */
+.nav-toggle {
+    display: none; /* Hidden on desktop */
+    background: none;
+    border: none;
+    color: #D4A373;
+    font-size: 1.8rem;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+/* --- Mobile Navigation Logic --- */
+@media (max-width: 991px) {
+    nav {
+        padding: 15px 25px;
+    }
+
+    .nav-toggle {
+        display: block; /* Show on mobile */
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background: rgba(18, 18, 18, 0.98);
+        padding: 80px 40px;
+        transition: 0.4s ease-in-out;
+        box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+        gap: 20px;
+    }
+
+    .nav-links.active {
+        display: flex;
+        right: 0; /* Slides menu into view */
+    }
+
+    .nav-links a {
+        font-size: 14px;
+        width: 100%;
+        text-align: center;
+        opacity: 1;
+    }
+}
