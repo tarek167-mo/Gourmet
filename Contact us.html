@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GOURMET - Contact Us</title>
-    <!-- CRITICAL: This filename must match your CSS file exactly[cite: 16] -->
-    <link rel="stylesheet" href="contact-design.css">
+    <!-- The ?v=1.1 trick forces your browser to refresh the design -->
+    <link rel="stylesheet" href="contact us-design_3.css?v=1.1">
 </head>
 <body>
     <nav class="anim-nav">
@@ -28,29 +28,39 @@
     </nav>
 
     <header class="hero">
-        <h1>Get in Touch</h1>
-        <p>We would love to hear from you. Book a table or ask a question.</p>
+        <div class="hero-content">
+            <h1>Get in Touch</h1>
+            <p>We would love to hear from you. Book a table or ask a question.</p>
+        </div>
     </header>
 
-    <div class="contact-container">
-        <div class="contact-form-wrapper">
-            <h2>Send us a Message</h2>
-            <form class="contact-form">
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <input type="tel" placeholder="Your Phone Number">
-                <textarea rows="5" placeholder="How can we help you?" required></textarea>
-                <button type="submit" class="submit-btn">Send Message</button>
-            </form>
-        </div>
-        <div class="contact-info">
-            <h2>Our Location</h2>
-            <p><strong>Address:</strong> East Hub, Madinty, Cairo</p>
-            <p><strong>Phone:</strong> +20 1009435169</p>
-            <p><strong>Email:</strong> reservations@Gourmet.com</p>
-        </div>
-    </div>
+    <main class="contact-section">
+        <div class="container contact-container">
+            <div class="contact-form-wrapper">
+                <h2>Send us a Message</h2>
+                <form class="contact-form">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <input type="tel" placeholder="Your Phone Number">
+                    <textarea rows="5" placeholder="How can we help you?" required></textarea>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
 
-    <script src="contact-js.js"></script>
+            <div class="contact-info">
+                <h2>Our Location</h2>
+                <div class="info-block">
+                    <h3>Address</h3>
+                    <p>East Hub, Madinty, Cairo</p>
+                </div>
+                <div class="info-block">
+                    <h3>Reservations</h3>
+                    <p>Phone: +20 1009435169<br>Email: reservations@Gourmet.com</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="contact us-js_3.js"></script>
 </body>
 </html>
